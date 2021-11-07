@@ -28,5 +28,33 @@
 
 ## 第一章	网络配置
 
-​	在安装完虚拟机
+​	在安装完虚拟机后第一步应给是配置网络，同时把虚拟机和主机网卡的关系捋一遍：
+
+##### 1）察看ip地址
+
+![image-20211107201601953](C:\Users\haifongzhong\AppData\Roaming\Typora\typora-user-images\image-20211107201601953.png)
+
+Linux参看IP地址的配置命令：nmcli、IP add ，ifconfig（centos7基本使用nmcli，需要的话自己再安装i服从fig的网络插件）。。。
+
+![image-20211107202225187](C:\Users\haifongzhong\AppData\Roaming\Typora\typora-user-images\image-20211107202225187.png)
+
+Windows下查看ip的命令：ipconfig、ipconfig /all。。。
+
+##### 2）设置Windows主机虚拟网卡的静态地址
+
+打开网络和Internet设置——更改适配器选项——选择VMnet8——Internet协议版本4（TCP/IPv4）属性——选择使用下面的IP地址，这里参考上图个人主机上分配的ip地址，DNS设置一样就行（百度一下114.114.114.114、8.8.8.8的区别），VMnet1也可以如此设置，当然不用主机模式也可以不设置。
+
+![image-20211107202840656](C:\Users\haifongzhong\AppData\Roaming\Typora\typora-user-images\image-20211107202840656.png)
+
+##### 2）查看nat模式配置
+
+​	打开Vmware——点击编辑——点击虚拟网络编辑器——点击更改设置，可观察到有三个设置好的网络，选中VMnet8 查看net设置和DHCP设置，这里有两个参数是我们在设置Linux主机的静态IP需要使用的，一个是在net设置中看到的网关：192.168.26.2，还有一个是在DHCP设置中看到的地址池：192.168.26.128-192.168.26.254
+
+![image-20211107203956597](C:\Users\haifongzhong\AppData\Roaming\Typora\typora-user-images\image-20211107203956597.png)
+
+##### 3）虚拟机网卡设置
+
+
+
+##### 4）测试
 
